@@ -10,12 +10,12 @@ class DataLoader():
         self.batch_size = batch_size
         self.train = pd.DataFrame(columns=['review', 'sentiment'])
         self.train = self.train.append(self.create_df_from_filepath('train', 'pos.txt', 1.0), ignore_index=True)
-        self.train = self.train.append(self.create_df_from_filepath('train', 'neg.txt', -1.0), ignore_index=True)
+        self.train = self.train.append(self.create_df_from_filepath('train', 'neg.txt', 0.0), ignore_index=True)
         self.train['sentiment'] = pd.to_numeric(self.train['sentiment'])
 
         self.test = pd.DataFrame(columns=['review', 'sentiment'])
         self.test = self.test.append(self.create_df_from_filepath('test', 'pos.txt', 1.0), ignore_index=True)
-        self.test = self.test.append(self.create_df_from_filepath('test', 'neg.txt', -1.0), ignore_index=True)
+        self.test = self.test.append(self.create_df_from_filepath('test', 'neg.txt', 0.0), ignore_index=True)
         self.test['sentiment'] = pd.to_numeric(self.test['sentiment'])
 
         self.preprocessing()
