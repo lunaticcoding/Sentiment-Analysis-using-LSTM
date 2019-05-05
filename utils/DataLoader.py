@@ -38,11 +38,11 @@ class DataLoader():
         total_words = len(words)
         sorted_words = count_words.most_common(total_words)
 
-        vocab_to_int = {w: i + 1 for i, (w, c) in enumerate(sorted_words)}
+        self.vocab_to_int = {w: i + 1 for i, (w, c) in enumerate(sorted_words)}
 
         self.reviews_int = []
         for review in self.train['review']:
-            r = [vocab_to_int[w] for w in review.split()]
+            r = [self.vocab_to_int[w] for w in review.split()]
             self.reviews_int.append(r)
 
         features = self.pad_features(200).reshape(-1, self.batch_size, 200)
